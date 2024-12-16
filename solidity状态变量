@@ -1,0 +1,14 @@
+// SPDX-License-Identifirer:MIT 必须要写的版权说明 MIT是麻省理工
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+//版本号
+//data types - values and references  数据类型-值和引用
+contract  simpleStorage {
+    uint public myUint = 123;
+    //初始值，如果不写修改方法永远保存123在区块链当中
+        
+    function foo()  external {
+        uint notstaetVriable = 456;
+    }
+    //只能够在调用foo函数的时候才能在虚拟机内存产生
+}
