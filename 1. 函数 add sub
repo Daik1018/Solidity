@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.2;
+//版本号
+//data types - values and references  数据类型-值和引用
+contract functionIntro {
+    function add(uint x, uint y) external pure returns (uint){
+    //external外部函数，只能在外部读取的函数 pure：没有读写操作
+        return x + y ;
+    }
+    //减法
+    function sub(uint x, uint y) external pure returns  (uint) {
+        return x-y;
+    }
