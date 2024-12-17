@@ -1,0 +1,27 @@
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract StateVariables {
+    uint public num;
+
+    function viewFunc() external view returns (uint) {
+        return num;
+    }
+    //通过view这个关键词来进行定义，只要读了链上的信息，就必须用上view这个关键词
+
+    function pureFunc() external pure returns (uint){
+        return 1;
+    }
+    //pure并不会读链上的信息，只有局部变量
+
+    function addTomNum(uint x) external view returns (uint){
+        return num + x;
+    }
+    //读取了number，所以用view
+
+    function add(uint x,uint y) external pure returns (uint) {
+        return x + y;
+    //只是把参数进行相加减，但并不会读取num这个状态变量
+    }
+    }
