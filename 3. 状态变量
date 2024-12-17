@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract StateVariables {
+    uint public myUint = 123;
+    //状态变量，只要不写修改的方法，就永远保存在链上了
+    //拥有一个初始值123
+
+    function foo() external {
+        uint notStateVariable = 456;
+//局部变量，只有在函数调用的时候才会产生，才会产生在函数内部的变量
+//external ，外部可见
+//只有在调用foo这个函数的时候才会在虚拟机当中产生
+    }
+}
+
