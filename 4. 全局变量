@@ -1,0 +1,19 @@
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Globalvarialbes {
+    function globalVars() external view returns (address,uint,uint) {
+        address sender = msg.sender;
+        //账户内容，指的是上一个调用这个函数内容的地址是什么，也有可能是一个人，也有可能是上一个调用这个合约的合约
+        uint timestamp = block.timestamp;
+        //区块链的时间戳。如果是只读的话，出来的就是当下的时间；如果是一个写入方法的话，就说明并不是真实的时间。时间戳是uint的类型
+        uint blockNumber = block.number;
+        //指的是当前的区块号 区块编号仍然是uint类型
+        return (sender,timestamp,blockNumber);
+        //
+    //三个全局变量分别写了调用函数的地址，时间戳，区块号
+    }
+    //view 和pure相似，view是只读，读取一些变量的值比如说状态变量和全局变量；pure不能够读取变量，只能读取局部变量
+
+}
