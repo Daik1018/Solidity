@@ -17,3 +17,5 @@ contract Globalvarialbes {
     //view 和pure相似，view是只读，读取一些变量的值比如说状态变量和全局变量；pure不能够读取变量，只能读取局部变量
 
 }
+
+//本代码叙述了是三个常用的全局变量以及运用
