@@ -1,0 +1,18 @@
+// SPDX-License-Identifirer:MIT 必须要写的版权说明 MIT是麻省理工
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Counter {
+    uint public count;
+    //uint 状态变量 范围 public 公开可见 
+
+    function inc() external {
+        count += 1;
+        //inc代表着增加count的值，写入方法不能写view和pure方法
+    }
+    function dec() external {
+        count -=1;
+        //des代表着减小值，external：外部可见：在合约的内部的其他函数是不能够调用他的，只能够通过外部读取
+    }
+}
+
