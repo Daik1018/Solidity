@@ -1,0 +1,15 @@
+// SPDX-License-Identifirer:MIT 必须要写的版权说明 MIT是麻省理工
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract defaultValues {
+    bool public b;
+    //定义了true和false
+    uint public u;
+    //定义了正整数
+    int  public c;
+    //定义了负数和正整数
+    address public a;
+    bytes32 public b32;
+    
+}
