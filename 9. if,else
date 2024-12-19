@@ -1,0 +1,27 @@
+// SPDX-License-Identifirer:MIT 必须要写的版权说明 MIT是麻省理工
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract IFELSE {
+    function example(uint _x) external  pure returns (uint) {
+        if (_x < 10) {
+            return 1;
+        }   else if (_x < 20) {
+            return 2;
+        }   else{
+            return 3;
+        }
+    }
+    function ternary(uint _x) external pure returns (uint) {
+        /**if (_x < 10 ) {
+            return 1;
+        }   else {
+            return 2;
+        }
+        以上可以简化成三元运算符***/
+        return _x < 10 ? 1 : 2 ;
+        //？代表着x小于10之后则返回1，冒号代表else，else之后返回2
+    }
+
+}
+
