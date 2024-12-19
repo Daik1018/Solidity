@@ -1,4 +1,3 @@
-
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -14,7 +13,8 @@ contract Globalvarialbes {
         //
     //三个全局变量分别写了调用函数的地址，时间戳，区块号
     }
-    //view 和pure相似，view是只读，读取一些变量的值比如说状态变量和全局变量；pure不能够读取变量，只能读取局部变量
+    //view 和pure相似，view是只读，读取一些变量的值比如说状态变量和全局变量；
+    pure不能够读取变量，只能读取局部变量
 
 }
 
