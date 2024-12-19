@@ -1,0 +1,14 @@
+// SPDX-License-Identifirer:MIT 必须要写的版权说明 MIT是麻省理工
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract constants {
+    address public constant MY_ADDRESS = 0xf8FD6b94E7Af8bA7CAdAdfeAB7194ffe3a8Fe2A7;
+    //constant可以把变量变成常量，常量的变量名称要变成大写，在智能合约中要变成大写名称
+    uint public constant MY_UINT = 123;
+}
+
+contract Var{
+    address public MY_ADDRESS = 0xf8FD6b94E7Af8bA7CAdAdfeAB7194ffe3a8Fe2A7;
+}
+//把不需要修改的值变为常量以此来减少消耗了gas
