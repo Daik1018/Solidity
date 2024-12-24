@@ -1,0 +1,27 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract LocalVariables {
+    uint public i;
+    bool public b;
+    address public myAddress;
+
+    function foo() external {
+        uint x = 123;
+        bool f = false;
+        // more code ,只在函数内部进行，并不会写在区块链上面
+        x += 456;
+        f = true;
+
+        i = 123;
+        b = true;
+        myAddress = address(1);
+
+    }
+}
+
+
+后面在左边入口进入解读后会显示四个按钮
+//橙色按钮代表写入方法 ，会改变链的状态
+//蓝色的三个按钮被foo进行了修改，修改之后链上的状态就会发生变化；
+//而局部变量不会发生任何变化，也不会让链上的数据产生任何变化
