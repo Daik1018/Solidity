@@ -22,8 +22,11 @@ contract Error {
         //断言为真的，断言不包含报错信息，只能够进行断言判断的作用
 
         function foo() public {
-                num += 1;
+                num += 1;               
+            }  
+    
+        function testCustomError(uint _i) public pure{
+            require(_i <= 10,"very long error message error error error error error");
+        }
 
-                
-            }
 }
