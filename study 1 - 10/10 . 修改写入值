@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Helloword{
+    string strvar = "hello word";
+    function sayhello() public view returns (string memory) {
+        return strvar;
+    }
+
+    function serHellowWorld(string memory newString) public {
+    strvar = newString;}
+
+}
+
+后ctrls之后进行重新编译然后按橙色的按钮，写入需要修改的内容之后在进行重新部署
