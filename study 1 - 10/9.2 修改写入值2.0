@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Helloword{
+    string strVar = "hello World";
+    function sayHello() public view returns (string memory) {
+        return addinfo(strVar);
+    }
+
+    function steHelloWorld(string memory newString) public {
+    strVar = newString;
+    }
+    //对合约内容进行修改
+
+    function addinfo(string memory helloWorldStr) internal pure returns (string memory) {
+    return string.concat(helloWorldStr, "from Frank's contract.");
+     }
+    //pure是纯运算，没有读取和改变状态，view是只读
+
+}
