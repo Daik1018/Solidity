@@ -3,26 +3,32 @@ pragma solidity ^0.8.0;
 
 contract Ownable {
     address public owner;
+//状态变量叫owner
 
     constructor() {
         owner = msg.sender ;
     }
+//构造函数中将部署的地址给owner
 
     modifier onlyOwner() {
         require(msg.sender == owner , "not owner");
         _;
     }
+//函数修改器，后面都需要调用函数修改器，调用者一定是owner中记录的那个地址才能够继续使用，最重要的是这个下划线——
 
     function setOwner(address _newOwner) view  external onlyOwner {
         require(_newOwner != address(0), "invalid address");
- 
     }
-    function onlyOwnerCanCallThisFunc() external onlyOwner {
+//只能由owner调用，外部可视的owner才可以调用，而且不能为0地址，如果是0地址那么地址就没了
+//后面加上报错信息
 
+    function onlyOwnerCanCallThisFunc() external onlyOwner {
     }
 
     function anyOneCanCall() external {
-
     }
+
+//定义了两个空的函数在里面
 }
-//
+
+//包含之前学过的状态变量，全局变量，函数修改器，函数错误的控制
