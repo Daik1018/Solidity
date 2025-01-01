@@ -1,0 +1,38 @@
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+//数组：动态数组，固定长度的定向数组
+//包括插入，修改，删除，弹出，通过函数来返回数组
+contract Array {
+    uint[] public nums = [1,2,3]; //定义动态数组，设置了初始值
+    uint[3] public numsFixed = [4,5,6];  // 定义定向数组，设置了初始值，3是它的数组长度，
+    
+    function examples() external {
+        nums.push(4); //动态数组可以通过push的方法推入数据，这里在尾部推入了4，定长数组不可以采用push
+        uint x = nums[1];
+//通过索引访问数组的值，数字代表索引位置，从0开始，uint1会索引成数字2
+        
+        nums[2] = 777;
+//通过索引把第二个值修改为了777，把数组的元素修改
+
+        delete nums[1];
+//删除索引，删除并不会修改了数组的长度，所以他会把索引为1的值修改为默认值，默认为0
+        
+        nums.pop();
+//采用pop会弹出数组中最后一个值，弹出之后数组会变短，最后一个元素4会被弹出
+        
+        uint len = nums.length;
+//采用len可以获取到数组的长度
+
+        uint[] memory a = new uint[] (5);
+//在内存中创建数组，写上一个uint，新的数组还要定义长度
+//在内存中不能使用pop或者push，只能够通过索引进行修改值
+//内存中局部变量只能够定义定长数组，而动态数组只能够存在于状态变量中
+        a[1] = 123;
+    }
+    
+    function returnArray() external view returns (uint[] memory) {
+        return nums;
+    }
+//把数组中所有元素返回
+}
