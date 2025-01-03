@@ -1,0 +1,42 @@
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract ArrayShift {
+        uint [] public arr;
+
+        function example() public {
+                arr = [1,2,3] ;
+                delete arr[1]; 
+                //delete只能删除数字但是不能删除长度，所以我们要找个另一个办法来解决
+        }
+
+        function remove(uint _index) public {
+                require(_index < arr.length,"index out of bound");
+//原理是删除了第二个元素之后，让被删除元素整体向左移动一个，最后一个用pop方法让他弹出，这样数组就会减少
+                for (uint i = _index; i < arr.length - 1;i++) {
+//用require确认索引值小于数组的长度，如果大于或等于就会报错
+//写一个循环，从要删除的地方开始到整个数组的长度-1结束，并且要小于数组的长度-1
+                        arr[i] = arr[i + 1];
+//在循环中写上将i的值修改为i+1，
+                }
+        arr.pop();
+//将最后一个值弹出
+        }
+//测试程序，部署test则为成功
+        function test() external {
+                arr = [1,2,3,4,5];
+                remove(2);
+                //断言
+                assert(arr[0] == 1);
+                assert(arr[1] == 2);
+                assert(arr[2] == 4);
+                assert(arr[3] == 5);
+                assert(arr.length == 4);
+
+                arr = [1];
+                remove(0);
+                assert(arr.length == 0);
+        }
+}
+//移动位置来删除数组中元素的办法
