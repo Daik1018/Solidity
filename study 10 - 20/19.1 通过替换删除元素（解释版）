@@ -1,0 +1,37 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract ArrayReplaceLAst {
+        uint[] public arr;
+
+        function remove(uint _index) public {
+                arr[_index] = arr[arr.length - 1];
+                arr.pop();
+        }
+//将index赋予数组中最后一个值
+//最后一个值用length-1
+//再把最后一个值pop掉
+
+//验证
+        function test() external {
+        arr = [1,2,3,4];
+        remove(1);
+//删除索引为1的元素
+
+        assert(arr.length == 3);
+        assert(arr[0] == 1);
+        assert(arr[1] == 4);
+        assert(arr[2] == 3);
+
+        remove(2);
+
+        assert(arr.length == 2);
+        assert(arr[0] == 1);
+        assert(arr[1] == 4);
+        }
+}
+
+
+
+//依旧可以改变，但是缺点是会改变数组的顺序，如果需要保持顺序的时候不要用这个方法
+//好处是相比另一个办法更省gas值
