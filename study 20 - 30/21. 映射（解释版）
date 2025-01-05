@@ -1,0 +1,32 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Mapping {
+        mapping(address => uint ) public balances;
+        //查找一个地址，余额会返回过来，这样就是一个映射关系，账本映射
+
+        mapping(address => mapping (address => bool )) public isFriend;
+        //查看两个地址是不是朋友关系，套映射
+
+        function examples() external {
+                balances[msg.sender] = 123;
+//设置映射地址，相当于调用者拥有了123这样的余额
+                uint bal = balances[msg.sender];
+//获取余额，用映射加入方括号， 方括号里面写上地址，bal等于映射返回的值
+                uint bal2 = balances[address(1)];
+//输入没有被定义过的，返回uint的默认值，uint的默认值是0
+
+                balances[msg.sender] = 456;
+//如果想要修改以及修改的值，那么只需要重新进行定义就可以，在这里也可以采用一些其他的算法
+
+//增加456       
+                balances[msg.sender] += 456; //默认值 + 546
+
+//删除
+                delete balances[msg.sender];//删除会恢复到默认值，而不是说真的删除
+
+ //嵌套映射，因为有两个主键，所以就需要设置两次，第一个是调用者，第二个是当前合约的地址
+        isFriend[msg.sender][address(this)] = true;
+        }
+}
+//类似于查找功能，循环完之后看结果是否一样，很浪费gas
