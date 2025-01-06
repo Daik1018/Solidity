@@ -1,0 +1,51 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract InterableMapping {
+ //数组是可以遍历每一个数组元素内容
+ //映射是可以找到直接数据
+//既可以遍历也可以查询
+
+        mapping (address => uint) public balances;
+//余额型的映射，地址对应余额
+        mapping (address => bool) public inserted;
+// 地址对应布尔值的映射来记录某一个地址是否存在于映射中
+        address[] public keys;
+//定义一个地址类型的数组
+
+        function set(address _key, uint _val) external {
+                balances[_key] = _val;
+//把余额的值对应上，主键当方括号里面的内容，写上对应的值
+
+        if (!inserted[_key]) {
+                inserted[_key] = true;
+                keys.push (_key);
+//判断key是不是已经插入到数组中了，如果没有就对应的就为False
+        }
+        }
+
+        function getSize() external view returns (uint) {
+                return keys.length;
+        }
+//获取长度的只读函数，用length返回长度
+
+        function first() external view returns (uint) {
+                return balances[keys[0]];
+        }
+//返回数组中第一个地址的余额，通过数组找到第一个地址再返回
+
+        function last() external view returns (uint) {
+                return balances[keys[keys.length -1]];
+        }
+//返回数组中最后一个地址的余额，用所有的元素-1就能够获得索引
+
+        function get(uint _i) external view returns (uint) {
+                return balances[keys[_i]];
+        }
+//获取任意一个地址的余额
+//要是想要知道整个数组中所有人的余额，采用数组的长度加上获取任何一个索引的余额，结合使用
+        }
+        
+
+
+
