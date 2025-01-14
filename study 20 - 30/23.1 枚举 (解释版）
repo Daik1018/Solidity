@@ -1,0 +1,48 @@
+//枚举
+//bool当中储存多种变量类型 
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.3;
+
+contract Enum {
+    enum Status {
+        None, //默认 
+        Pedning, //处理中
+        Shipeed, //装载中
+        Completed, //已装载
+        Rejected,  // 已拒绝
+        Canceled //已取消
+    }
+
+    Status public status;
+//类型大写开头，变量小写开头
+
+    struct Order {
+        address buyer;
+        Status status;
+    }
+
+    Order[] public  order;
+//定义一个数组
+
+    function get() view external returns (Status) {
+        return status;
+    }
+//只读类型只返回枚举类型的值
+
+    function set(Status _status) external {
+        status = _status ;
+    }
+//设置枚举类型的状态变量
+
+    function ship() external {
+        status = Status.Shipeed;
+    }
+//将状态变量修改为自己需要的值
+
+    function reset() external {
+        delete status;
+    }
+//让枚举变成默认
+}
+
