@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.7 < 0.9.0;
+
+contract Assem {
+    function add(uint a,uint b) public pure returns (uint) {
+//assembly修饰符 大括号里面就是代码        
+        assembly {
+            let sum := add(a,b) //add对ab进行操作
+            mstore (0x0,sum)  //存储到内存里面
+            return (0x0,32)  //返回值
+        }
+    }
+
+
+    function call(uint a) public pure returns(uint) {
+        bytes4 sig = bytes4(keccak256("call(uint)"));
+//对方法进行了256的编码，传进去的参数变成2进制
+        assembly {
+            mstore(0x0,sig)
+            let addressData := add(0x0,4)
+            mstore(addressData,a)
+            return (addressData,32)
+        }
+    }
+}
