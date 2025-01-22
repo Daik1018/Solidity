@@ -1,0 +1,20 @@
+//storag上的是状态变量，memory是局部变量，calldata只能用在参数中
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract DataLocations {
+    struct MyStruct {
+        uint foo;
+        string text;
+    }
+    mapping (address => MyStruct) public myStructs;
+    function examples() external {
+        myStructs[msg.sender] = myStructs[msg.sender];
+        
+        MyStruct storage myStruct = myStructs[msg.sender];
+        myStruct.text = "foo";
+//把状态变量读取到了myStruct当中，当写入时状态变量也会随之进行变化
+        MyStruct memory readOnly = myStructs[msg.sender];
+        readOnly.foo =456;
+//修改的值函数结束之后就消失了，不会存储在链上
+    }
+}
