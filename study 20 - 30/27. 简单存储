@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimplesStorage {
+    string public text;
+//定义字符串变量，公开可视 
+    function set(string memory _text) external {
+        text = _text;
+//用下划线区分，external代表合约内部其他函数不可以调用他
+//用calldata可以节约gas消费量
+
+    }
+//新的读取方法get 读取状态变量用view
+
+    function get() external view returns (string memory) {
+        return text;
+    }
+
+}
+
+//在旁边写入记得加上双引号
