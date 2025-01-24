@@ -1,0 +1,35 @@
+//事件记录当前智能合约运行状态的方法，会体现区块链浏览器上，或者体现logs里
+//可以查询改编过的状态
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+
+contract EVent{
+    event Log(string message,uint val);
+//大写开头，定义字符串叫消息messag，定义一个无符号整数
+
+    event IndexedLog(address indexed sender,uint val);
+//类型加上索引，indexed标记过的变量可以在链外进行查询
+
+    function example() external {
+//写一个方法，方法函数中，触发事件采用emit，跟上事件名称，再跟上触发名声的值
+        emit Log("foo",1234);
+
+        emit IndexedLog(msg.sender, 789);
+    }
+//用a显示a，用b显示b，在外用web可以用a地址查询到所有进行的操作，类似于检索
+//有索引的变量只能有三个，超过三个就会报错
+
+    event Message(address indexed _from,address indexed _to,string  message);
+    
+    function sendMessage(address _to,string calldata message) external {
+        emit Message(msg.sender, _to, message);
+    }
+//通过emit触发事件
+//第一个变量输入的是消息的调用者
+//第二个变量是传入的to地址
+//第三个是传入的字符串变量
+
+//事件的存储会节约gas
+    }
+//调用的时候就会被记录，会体现到区块链浏览器上
